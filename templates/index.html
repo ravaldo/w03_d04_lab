@@ -1,0 +1,35 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+
+	<form action="/events" method="post">
+		<label for="date">Event Date</label>
+		<input type="date" name="date" id="date" value="2023-01-01" min="2023-01-01" max="2030-01-01"></br>
+		<label for ="name">Event Name</label>
+		<input type="text" name="name" id="name"></br>
+		<label for ="num_guests">Number of guests</label>
+		<input type="number" name="num_guests" id="num_guests" min="0"></br>
+		<label for ="room">Location</label>
+		<input type="text" name="room" id="room"></br>
+		<label for ="description">Event Description</label>
+		<textarea name="description" id="description" rows="2" cols="30"></textarea></br>
+		<label for ="recurring">Recurring Event?</label>
+		<input type="checkbox" name="recurring" id="recurring"></br>
+		<input type="submit" value="Add Event">
+	</form>
+	
+<!--	the name attributes above become the key value for the dictionary in the POST request-->
+
+	{% for e in events %}
+		<h2>{{e}} recurring: {% if e.is_recurring %} 
+			<span>&#9745;</span>
+			{% endif %}
+		
+		
+		
+		</h2> 
+		
+	{% endfor %}
+
+{% endblock %}
